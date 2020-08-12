@@ -56,5 +56,27 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="dbo" />
+    <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Tables" />
+    <Folder Include="PublishLocations" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\Product.sql" />
+    <Build Include="dbo\Tables\Component.sql" />
+    <Build Include="dbo\Tables\BugStatus.sql" />
+    <Build Include="dbo\Tables\BugStatusSubState.sql" />
+    <Build Include="dbo\Tables\ProductVersion.sql" />
+    <Build Include="dbo\Tables\BugPriority.sql" />
+    <Build Include="dbo\Tables\BugSeverity.sql" />
+    <Build Include="dbo\Tables\BugType.sql" />
+    <Build Include="dbo\Tables\BugComment.sql" />
+    <Build Include="dbo\Tables\ProductHardware.sql" />
+    <Build Include="dbo\Tables\ProductOS.sql" />
+    <Build Include="dbo\Tables\ComponentBug.sql" />
+    <Build Include="dbo\Tables\User.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="HandiBugTrackerData.refactorlog" />
   </ItemGroup>
 </Project>
