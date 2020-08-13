@@ -60,6 +60,7 @@
     <Folder Include="dbo\Stored Procedures" />
     <Folder Include="dbo\Tables" />
     <Folder Include="PublishLocations" />
+    <Folder Include="PostPublishScripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Product.sql" />
@@ -78,5 +79,11 @@
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HandiBugTrackerData.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="PostPublishScripts\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PublishLocations\HandiBugTrackerData.publish.xml" />
   </ItemGroup>
 </Project>
