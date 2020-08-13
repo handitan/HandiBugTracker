@@ -1,0 +1,7 @@
+﻿CREATE PROCEDURE [dbo].[spProductOS_GetAll]
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT Id,Name FROM dbo.ProductOS
+END
