@@ -7,6 +7,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "HandiBugTrackerData", "Hand
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandiBugTrackerWebAPI", "HandiBugTrackerWebAPI\HandiBugTrackerWebAPI.csproj", "{B1A90F7B-3CDB-438F-BCE8-319FED6B4637}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandiBugTrackerDataManager", "HandiBugTrackerDataManager\HandiBugTrackerDataManager.csproj", "{89798DA0-79D0-4895-99CF-648D1AADE3E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{B1A90F7B-3CDB-438F-BCE8-319FED6B4637}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1A90F7B-3CDB-438F-BCE8-319FED6B4637}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1A90F7B-3CDB-438F-BCE8-319FED6B4637}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89798DA0-79D0-4895-99CF-648D1AADE3E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89798DA0-79D0-4895-99CF-648D1AADE3E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89798DA0-79D0-4895-99CF-648D1AADE3E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89798DA0-79D0-4895-99CF-648D1AADE3E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
