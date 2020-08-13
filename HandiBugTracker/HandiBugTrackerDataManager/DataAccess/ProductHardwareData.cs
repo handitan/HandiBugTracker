@@ -20,7 +20,7 @@ namespace HandiBugTrackerDataManager.DataAccess
 
         public async Task<IEnumerable<ProductHardwareModel>> GetProductHardwares()
         {
-            var result = await _sqlDataAccess.LoadDataAsync<ProductHardwareModel, dynamic>("dbo.spProductHardware_GetAll", new { }, "HandiBugTrackerData");
+            var result = await _sqlDataAccess.LoadDataAsync<ProductHardwareModel, dynamic>(DataAccessConstant.SP_ProductHardware_GetAll, new { }, DataAccessConstant.HandiBugTrackerConn);
             return result;
         }
     }

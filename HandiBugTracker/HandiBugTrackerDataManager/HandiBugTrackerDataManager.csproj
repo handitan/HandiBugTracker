@@ -45,11 +45,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\BugStatusData.cs" />
+    <Compile Include="DataAccess\BugStatusSubStateData.cs" />
     <Compile Include="DataAccess\IProductHardwareData.cs" />
     <Compile Include="DataAccess\ProductHardwareData.cs" />
+    <Compile Include="DataAccess\BugTypeData.cs" />
+    <Compile Include="DataAccess\ProductVersionData.cs" />
+    <Compile Include="DataAccess\ProductOSData.cs" />
+    <Compile Include="Internal\DataAccess\DataAccessConstant.cs" />
     <Compile Include="Internal\DataAccess\ISqlDataAccess.cs" />
     <Compile Include="Internal\DataAccess\SqlDataAccess.cs" />
+    <Compile Include="Models\BugStatusModel.cs" />
+    <Compile Include="Models\BugStatusSubStateModel.cs" />
+    <Compile Include="Models\BugTypeModel.cs" />
     <Compile Include="Models\ProductHardwareModel.cs" />
+    <Compile Include="Models\ProductOSModel.cs" />
+    <Compile Include="Models\ProductVersionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
