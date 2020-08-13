@@ -86,7 +86,7 @@
     <Build Include="dbo\Stored Procedures\spBugComment_GetByBug.sql" />
     <Build Include="dbo\Stored Procedures\spComponent_GetByProduct.sql" />
     <Build Include="dbo\Stored Procedures\spComponentBug_GetAll.sql" />
-    <Build Include="dbo\Stored Procedures\spGetBugStatusSubState_GetAll.sql" />
+    <Build Include="dbo\Stored Procedures\spBugStatusSubState_GetAll.sql" />
     <Build Include="dbo\Stored Procedures\spComponentBug_GetFilterBy.sql" />
     <Build Include="dbo\Stored Procedures\spProductVersion_GetByProduct.sql" />
     <Build Include="dbo\Stored Procedures\spUser_GetAll.sql" />

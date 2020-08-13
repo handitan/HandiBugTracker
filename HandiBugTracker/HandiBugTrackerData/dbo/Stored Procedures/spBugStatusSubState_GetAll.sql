@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[spGetBugStatusSubState_GetAll]
+﻿CREATE PROCEDURE [dbo].[spBugStatusSubState_GetAll]
 AS
 BEGIN
 	SET NOCOUNT ON;
