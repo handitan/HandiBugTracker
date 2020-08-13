@@ -4,10 +4,11 @@
 AS
 	SET NOCOUNT ON;
 
-	SELECT	CmtBug.Id,CmtBug.[Name],Btp.Name,Prod.Name,
-			Cmp.Name,
+	SELECT	CmtBug.Id,CmtBug.[Name],Btp.Name AS TypeName,
+			Prod.Name AS ProductName, Cmp.Name AS CompName,
 			(AssigneeUsr.FirstName + ' ' + AssigneeUsr.LastName) AS FullName,
-			BStat.Name,BStatSub.Name, CmtBug.LastModifiedDate
+			BStat.Name AS StatusName,BStatSub.Name AS SubStateName,
+			CmtBug.LastModifiedDate
 	FROM dbo.ComponentBug AS CmtBug LEFT JOIN dbo.[User] AS ReporterUsr
 		 ON CmtBug.ReporterId = ReporterUsr.Id
 		 LEFT JOIN dbo.[User] AS AssigneeUsr
