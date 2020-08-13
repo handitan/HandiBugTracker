@@ -81,16 +81,12 @@ END
 
 IF NOT EXISTS (SELECT * FROM dbo.BugStatusSubState)
 BEGIN
-    DECLARE @ResolvedId int
-    SELECT @ResolvedId = (SELECT Id FROM dbo.BugStatus WHERE Name = 'RESOLVED')
-    IF (@ResolvedId > 0)
-    BEGIN
-        INSERT INTO dbo.BugStatusSubState (Name,BugStatusId)
-        VALUES  ('FIXED',@ResolvedId),
-                ('INVALID',@ResolvedId),
-                ('WONTFIX',@ResolvedId),
-                ('NOTABUG',@ResolvedId),
-                ('NOTOURBUG',@ResolvedId),
-                ('INSUFFICIENTDATA',@ResolvedId)
-    END
+    INSERT INTO dbo.BugStatusSubState (Name)
+    VALUES  ('---'),
+            ('FIXED'),
+            ('INVALID'),
+            ('WONTFIX'),
+            ('NOTABUG'),
+            ('NOTOURBUG'),
+            ('INSUFFICIENTDATA')
 END
