@@ -45,16 +45,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\ComponentBugData.cs" />
+    <Compile Include="DataAccess\ComponentData.cs" />
+    <Compile Include="DataAccess\BugCommentData.cs" />
+    <Compile Include="DataAccess\BugPriorityData.cs" />
+    <Compile Include="DataAccess\BugSeverityData.cs" />
     <Compile Include="DataAccess\BugStatusData.cs" />
     <Compile Include="DataAccess\BugStatusSubStateData.cs" />
     <Compile Include="DataAccess\IProductHardwareData.cs" />
+    <Compile Include="DataAccess\UserData.cs" />
     <Compile Include="DataAccess\ProductHardwareData.cs" />
     <Compile Include="DataAccess\BugTypeData.cs" />
+    <Compile Include="DataAccess\ProductData.cs" />
     <Compile Include="DataAccess\ProductVersionData.cs" />
     <Compile Include="DataAccess\ProductOSData.cs" />
     <Compile Include="Internal\DataAccess\DataAccessConstant.cs" />
     <Compile Include="Internal\DataAccess\ISqlDataAccess.cs" />
     <Compile Include="Internal\DataAccess\SqlDataAccess.cs" />
+    <Compile Include="Models\BugCommentModel.cs" />
+    <Compile Include="Models\ComponentBugModel.cs" />
+    <Compile Include="Models\ComponentModel.cs" />
+    <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\UserModel .cs" />
+    <Compile Include="Models\BugPriorityModel.cs" />
+    <Compile Include="Models\BugSeverityModel.cs" />
     <Compile Include="Models\BugStatusModel.cs" />
     <Compile Include="Models\BugStatusSubStateModel.cs" />
     <Compile Include="Models\BugTypeModel.cs" />
