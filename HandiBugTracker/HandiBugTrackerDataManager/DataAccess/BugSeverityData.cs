@@ -8,17 +8,17 @@ using HandiBugTrackerDataManager.Models;
 
 namespace HandiBugTrackerDataManager.DataAccess
 {
-    public class BugSeverityData
+    public class BugSeverityData : IBugSeverityData
     {
         private readonly ISqlDataAccess _sqlDataAccess;
 
-        public BugSeverityData(){}
+        public BugSeverityData() { }
         public BugSeverityData(ISqlDataAccess pSQLDataAccess)
         {
             this._sqlDataAccess = pSQLDataAccess;
         }
 
-        public async Task<IEnumerable<BugSeverityModel>> GetProductOSes()
+        public async Task<IEnumerable<BugSeverityModel>> GetBugSeverities()
         {
             var result = await _sqlDataAccess.LoadDataAsync<BugSeverityModel, dynamic>(DataAccessConstant.SP_BugSeverity_GetAll, new { }, DataAccessConstant.HandiBugTrackerConn);
             return result;

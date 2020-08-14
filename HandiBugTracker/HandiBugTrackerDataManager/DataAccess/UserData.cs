@@ -8,17 +8,17 @@ using HandiBugTrackerDataManager.Models;
 
 namespace HandiBugTrackerDataManager.DataAccess
 {
-    public class UserData
+    public class UserData : IUserData
     {
         private readonly ISqlDataAccess _sqlDataAccess;
 
-        public UserData(){}
+        public UserData() { }
         public UserData(ISqlDataAccess pSQLDataAccess)
         {
             this._sqlDataAccess = pSQLDataAccess;
         }
 
-        public async Task<IEnumerable<UserModel>> GetProductOSes()
+        public async Task<IEnumerable<UserModel>> GetUsers()
         {
             var result = await _sqlDataAccess.LoadDataAsync<UserModel, dynamic>(DataAccessConstant.SP_User_GetAll, new { }, DataAccessConstant.HandiBugTrackerConn);
             return result;

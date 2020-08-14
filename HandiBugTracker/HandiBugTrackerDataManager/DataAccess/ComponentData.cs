@@ -8,20 +8,20 @@ using HandiBugTrackerDataManager.Models;
 
 namespace HandiBugTrackerDataManager.DataAccess
 {
-    public class ComponentData
+    public class ComponentData : IComponentData
     {
         private readonly ISqlDataAccess _sqlDataAccess;
 
-        public ComponentData(){}
+        public ComponentData() { }
         public ComponentData(ISqlDataAccess pSQLDataAccess)
         {
             this._sqlDataAccess = pSQLDataAccess;
         }
 
-        public async Task<IEnumerable<BugCommentModel>> GetComponentByProductId(int pProductId)
+        public async Task<IEnumerable<ComponentModel>> GetComponentByProductId(int pProductId)
         {
 
-            var result = await _sqlDataAccess.LoadDataAsync<BugCommentModel, dynamic>(DataAccessConstant.SP_Component_GetByProduct, new { ProductId = pProductId }, DataAccessConstant.HandiBugTrackerConn);
+            var result = await _sqlDataAccess.LoadDataAsync<ComponentModel, dynamic>(DataAccessConstant.SP_Component_GetByProduct, new { ProductId = pProductId }, DataAccessConstant.HandiBugTrackerConn);
             return result;
         }
     }

@@ -8,11 +8,11 @@ using HandiBugTrackerDataManager.Models;
 
 namespace HandiBugTrackerDataManager.DataAccess
 {
-    public class ComponentBugData
+    public class ComponentBugData : IComponentBugData
     {
         private readonly ISqlDataAccess _sqlDataAccess;
 
-        public ComponentBugData(){}
+        public ComponentBugData() { }
         public ComponentBugData(ISqlDataAccess pSQLDataAccess)
         {
             this._sqlDataAccess = pSQLDataAccess;

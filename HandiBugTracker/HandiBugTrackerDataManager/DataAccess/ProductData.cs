@@ -8,17 +8,17 @@ using HandiBugTrackerDataManager.Models;
 
 namespace HandiBugTrackerDataManager.DataAccess
 {
-    public class ProductData
+    public class ProductData : IProductData
     {
         private readonly ISqlDataAccess _sqlDataAccess;
 
-        public ProductData(){}
+        public ProductData() { }
         public ProductData(ISqlDataAccess pSQLDataAccess)
         {
             this._sqlDataAccess = pSQLDataAccess;
         }
 
-        public async Task<IEnumerable<ProductModel>> GetProductOSes()
+        public async Task<IEnumerable<ProductModel>> GetProducts()
         {
             var result = await _sqlDataAccess.LoadDataAsync<ProductModel, dynamic>(DataAccessConstant.SP_Product_GetAll, new { }, DataAccessConstant.HandiBugTrackerConn);
             return result;
