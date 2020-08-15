@@ -5,6 +5,7 @@ namespace HandiBugTrackerWebClient.Library.Api
 {
     public interface IAPIHelper
     {
+        HttpClient ApiClient { get; }
         Task<bool> VerifyLogin(string pLoginName, string pPassword);
     }
 }

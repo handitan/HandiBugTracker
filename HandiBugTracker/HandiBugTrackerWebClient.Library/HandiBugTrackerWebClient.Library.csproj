@@ -49,7 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\APIHelper.cs" />
+    <Compile Include="Api\BugListEndpoint.cs" />
     <Compile Include="Api\IAPIHelper.cs" />
+    <Compile Include="Api\IBugListEndpoint.cs" />
+    <Compile Include="Models\CompBugViewModel.cs" />
     <Compile Include="Models\TokenViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
