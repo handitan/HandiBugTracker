@@ -4,10 +4,12 @@
 AS
 	SET NOCOUNT ON;
 
-	SELECT	CmtBug.Id,CmtBug.[Name],Btp.Name AS TypeName,
-			Prod.Name AS ProductName, Cmp.Name AS CompName,
-			(AssigneeUsr.FirstName + ' ' + AssigneeUsr.LastName) AS FullName,
-			BStat.Name AS StatusName,BStatSub.Name AS SubStateName,
+	SELECT	CmtBug.Id,CmtBug.[Name],Btp.Id AS TypeId,Btp.Name AS TypeName,
+			Prod.Id AS ProductId,Prod.Name AS ProductName,
+			Cmp.Id AS CompId, Cmp.Name AS CompName,
+			(AssigneeUsr.FirstName + ' ' + AssigneeUsr.LastName) AS AssigneeName,
+			BStat.Id AS StatusId, BStat.Name AS StatusName,
+			BStatSub.Id AS SubStateId, BStatSub.Name AS SubStateName,
 			CmtBug.LastModifiedDate
 	FROM dbo.ComponentBug AS CmtBug LEFT JOIN dbo.[User] AS ReporterUsr
 		 ON CmtBug.ReporterId = ReporterUsr.Id
@@ -35,6 +37,7 @@ AS
 		 ON CmtBug.ProductOSId = ProdOS.Id
 		 LEFT JOIN dbo.Component AS Cmp
 		 ON CmtBug.ComponentId = Cmp.Id
-	WHERE (@AssigneeId = NULL OR CmtBug.AssigneeId = @AssigneeId)
+	WHERE (@AssigneeId IS NULL OR CmtBug.AssigneeId = @AssigneeId)
 	  AND (@Id = -1 OR CmtBug.Id = @Id)
+	ORDER BY CmtBug.LastModifiedDate DESC
 RETURN 0
