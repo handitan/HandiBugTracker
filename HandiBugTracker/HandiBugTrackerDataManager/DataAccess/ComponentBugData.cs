@@ -20,7 +20,9 @@ namespace HandiBugTrackerDataManager.DataAccess
 
         public async Task<IEnumerable<ComponentBugModel>> GetComponentBugFilterBy(int pBugId = -1, string pAssigneeId = null)
         {
-            var result = await _sqlDataAccess.LoadDataAsync<ComponentBugModel, dynamic>(DataAccessConstant.SP_ComponentBug_GetFilterBy, new { AssigneeId = pBugId, Id = pBugId }, DataAccessConstant.HandiBugTrackerConn);
+            var result = await _sqlDataAccess.LoadDataAsync<ComponentBugModel, dynamic>(DataAccessConstant.SP_ComponentBug_GetFilterBy, 
+               new { Id = pBugId, AssigneeId = pAssigneeId},
+               DataAccessConstant.HandiBugTrackerConn);
             return result;
         }
     }

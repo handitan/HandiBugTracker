@@ -9,11 +9,17 @@ namespace HandiBugTrackerDataManager.Models
     public class ComponentBugModel
     {
         public int Id { get; set; }
+        public string Name { get; set; }
+        public int TypeId { get; set; }
         public string TypeName { get; set; }
+        public int ProductId { get; set; }
         public string ProductName { get; set; }
+        public int CompId { get; set; }
         public string CompName { get; set; }
-        public string FullName { get; set; }
+        public string AssigneeName { get; set; }
+        public int StatusId { get; set; }
         public string StatusName { get; set; }
+        public int SubStateId { get; set; }
         public string SubStateName { get; set; }
         public DateTime LastModifiedDate { get; set; }
     }
