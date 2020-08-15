@@ -21,11 +21,13 @@ namespace HandiBugTrackerWebAPI.Controllers
         {
             this._compBugData = pCompBugData;
         }
-        
-        //GET api/Components
-        public async Task<IEnumerable<ComponentBugModel>> Get(UriBugFilterModel pBugFilterModel)
+
+        //GET api/ComponentBugs
+        //public async Task<IEnumerable<ComponentBugModel>> Get(UriBugFilterModel pBugFilterModel)
+        public async Task<IEnumerable<ComponentBugModel>> Get(int bugid)
         {
-            var result = await _compBugData.GetComponentBugFilterBy(pBugFilterModel.BugId, pBugFilterModel.AssigneeId);
+            //var result = await _compBugData.GetComponentBugFilterBy(pBugFilterModel.BugId, pBugFilterModel.AssigneeId);
+            var result = await _compBugData.GetComponentBugFilterBy(bugid);
             return result;
         }
     }
