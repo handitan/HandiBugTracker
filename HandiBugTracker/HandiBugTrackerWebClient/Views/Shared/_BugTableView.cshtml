@@ -1,0 +1,64 @@
+﻿@model IPagedList<HandiBugTrackerWebClient.Library.Models.CompBugViewModel>
+@using X.PagedList.Mvc;
+@using X.PagedList
+
+<h2>Bug List</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Type
+        </th>
+        <th>
+            Summary
+        </th>
+        <th>
+            Product
+        </th>
+        <th>
+            Assignee
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Resolution
+        </th>
+        <th>
+            Updated
+        </th>
+    </tr>
+
+    @foreach (var bugItem in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => bugItem.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => bugItem.TypeName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => bugItem.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => bugItem.ProductName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => bugItem.AssigneeName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => bugItem.StatusName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => bugItem.SubStateName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => bugItem.LastModifiedDate)
+    </td>
+</tr>
+    }
+</table>

@@ -17,12 +17,21 @@ namespace HandiBugTrackerWebClient.App_Start
             var builder = new ContainerBuilder();
             //For MVC, use RegisterApiControllers
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
-            builder.RegisterType<APIHelper>().
-                    As<IAPIHelper>().
-                    SingleInstance();
+            registerTypes(builder);
             var container = builder.Build();
             //For MVC, use DependencyResolver
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+        }
+
+        private static void registerTypes(ContainerBuilder pContainerBuilder)
+        {
+            pContainerBuilder.RegisterType<BugListEndpoint>().
+                    As<IBugListEndpoint>().
+                    SingleInstance();
+
+            pContainerBuilder.RegisterType<APIHelper>().
+                    As<IAPIHelper>().
+                    SingleInstance();
         }
     }
 }

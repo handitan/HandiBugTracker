@@ -1,0 +1,7 @@
+﻿@model IPagedList<HandiBugTrackerWebClient.Library.Models.CompBugViewModel>
+@using X.PagedList
+@{
+    ViewBag.Title = "Index";
+}
+@Html.Partial("_BugTableView",Model)
+

@@ -15,8 +15,8 @@ namespace HandiBugTrackerWebClient
 
             routes.MapRoute(
                 name: "Main",
-                url: "Home/Index",
-                defaults: new { controller = "Home", action = "Index" }
+                url: "BugList/Index",
+                defaults: new { controller = "BugList", action = "Index" }
             );
 
             routes.MapRoute(
