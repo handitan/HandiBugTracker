@@ -150,6 +150,7 @@
     <Compile Include="Controllers\BugDetailsController.cs" />
     <Compile Include="Controllers\BugListController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SaveBugController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -199,6 +200,7 @@
     <Content Include="Views\Shared\_BugTableView.cshtml" />
     <Content Include="Views\Shared\_MainLayout.cshtml" />
     <Content Include="Views\BugDetails\Index.cshtml" />
+    <Content Include="Views\SaveBug\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

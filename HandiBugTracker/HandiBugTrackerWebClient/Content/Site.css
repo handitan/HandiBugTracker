@@ -22,3 +22,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*login form*/
+.login-form {
+    margin: 0 auto;
+}

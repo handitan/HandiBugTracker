@@ -4,131 +4,115 @@
     ViewBag.Title = "Index";
 }
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+@using (Html.BeginForm("Save", "BugDetails", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TypeId)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TypeName)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TypeId)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.TypeName)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TypeName)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TypeName)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.ProductName)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductId)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CompName)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductId)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.CompName)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AssigneeName)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.AssigneeName)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CompId)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.StatusName)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CompId)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.StatusName)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CompName)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SubStateName)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CompName)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.SubStateName)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AssigneeName)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastModifiedDate)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AssigneeName)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.LastModifiedDate)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StatusId)
-        </dt>
+            </dl>
 
-        <dd>
-            @Html.DisplayFor(model => model.StatusId)
-        </dd>
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.TypeId)
+            @Html.HiddenFor(model => model.ProductId)
+            @Html.HiddenFor(model => model.CompId)
+            @Html.HiddenFor(model => model.StatusId)
+            @Html.HiddenFor(model => model.SubStateId)
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StatusName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StatusName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SubStateId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SubStateId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SubStateName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SubStateName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastModifiedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastModifiedDate)
-        </dd>
-
-    </dl>
-    <div class="panel-group">
-        @foreach (var item in Model.BugComments)
-        {
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    @item.FullName
-                    <br />
-                    Description - @item.CreatedDate
-                </div>
-                <div class="panel-body">
-                    @item.Description
-                </div>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.ClientNewComment, new { @class = "form-control z-depth-1", @cols = 100, @rows = 10, @placeholder = "Write new comment here..." })
+                @Html.ValidationMessageFor(model => model.ClientNewComment, "", new { @class = "text-danger" })
             </div>
-        }
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save Changes" class="btn btn-default" />
+            </div>
+        </div>
+
+        <div class="panel-group">
+            @foreach (var item in Model.BugComments)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @item.FullName
+                        <br />
+                        Description - @item.CreatedDate
+                    </div>
+                    <div class="panel-body">
+                        @item.Description
+                    </div>
+                </div>
+            }
+        </div>
     </div>
-</div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to Bug List", "Index", "BugList")
-    </p>
+}
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to Bug List", "Index", "BugList")
+</p>

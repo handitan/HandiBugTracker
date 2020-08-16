@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using HandiBugTrackerWebClient.Library.Api;
+using HandiBugTrackerWebClient.Library.Models;
 
 namespace HandiBugTrackerWebClient.Controllers
 {
@@ -29,6 +30,13 @@ namespace HandiBugTrackerWebClient.Controllers
             {
                 return View("Error");
             }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Save(CompBugViewModel pComBugViewModel)
+        {
+            return RedirectToAction("Index", "SaveBug");
         }
     }
 }
