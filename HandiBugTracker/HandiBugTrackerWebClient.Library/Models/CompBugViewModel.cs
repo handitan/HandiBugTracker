@@ -22,6 +22,6 @@ namespace HandiBugTrackerWebClient.Library.Models
         public int SubStateId { get; set; }
         public string SubStateName { get; set; }
         public DateTime LastModifiedDate { get; set; }
-        public IEnumerable<BugCommentViewModel> BugComments { get; set; }
+        public IList<BugCommentViewModel> BugComments { get; set; }
     }
 }

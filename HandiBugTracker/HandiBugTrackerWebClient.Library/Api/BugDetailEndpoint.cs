@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using HandiBugTrackerWebClient.Library.Models;
-using Newtonsoft.Json;
 
 namespace HandiBugTrackerWebClient.Library.Api
 {
@@ -39,8 +36,7 @@ namespace HandiBugTrackerWebClient.Library.Api
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    var tokenJSON = await response.Content.ReadAsStringAsync();
-                    var bugComments = JsonConvert.DeserializeObject<List<BugCommentViewModel>>(tokenJSON);
+                    var bugComments = await response.Content.ReadAsAsync<IList<BugCommentViewModel>>();
                     if (result.Count > 0)
                     {
                         result[0].BugComments = bugComments;
