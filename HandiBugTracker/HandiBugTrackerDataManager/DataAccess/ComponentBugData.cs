@@ -25,5 +25,12 @@ namespace HandiBugTrackerDataManager.DataAccess
                DataAccessConstant.HandiBugTrackerConn);
             return result;
         }
+
+        public async Task EditComponentBug(ComponentBugParamModel pCompBugParamModel)
+        {
+            await _sqlDataAccess.SaveDataAsync<ComponentBugParamModel>(DataAccessConstant.SP_ComponentBug_Edit,
+               pCompBugParamModel,
+               DataAccessConstant.HandiBugTrackerConn);
+        }
     }
 }

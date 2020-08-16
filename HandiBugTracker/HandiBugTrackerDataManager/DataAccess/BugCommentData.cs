@@ -33,7 +33,19 @@ namespace HandiBugTrackerDataManager.DataAccess
                 ReporterId = pReporterId
             };
 
-            await _sqlDataAccess.SaveDataAsync<dynamic>(DataAccessConstant.SP_BugComment_CreateBy,itemToCreate, DataAccessConstant.HandiBugTrackerConn);
+            await _sqlDataAccess.SaveDataAsync<dynamic>(DataAccessConstant.SP_BugComment_Create,itemToCreate, DataAccessConstant.HandiBugTrackerConn);
+        }
+
+        public async Task EditBugCommentBy(int pBugId, string pDescription, string pReporterId)
+        {
+            var itemToEdit = new
+            {
+                BugId = pBugId,
+                Description = pDescription,
+                ReporterId = pReporterId
+            };
+
+            await _sqlDataAccess.SaveDataAsync<dynamic>(DataAccessConstant.SP_BugComment_Edit, itemToEdit, DataAccessConstant.HandiBugTrackerConn);
         }
     }
 }

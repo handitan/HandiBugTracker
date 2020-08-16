@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\ComponentBugData.cs" />
+    <Compile Include="DataAccess\ComponentBugOptionsData.cs" />
     <Compile Include="DataAccess\ComponentData.cs" />
     <Compile Include="DataAccess\BugCommentData.cs" />
     <Compile Include="DataAccess\BugPriorityData.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="DataAccess\IBugStatusSubStateData.cs" />
     <Compile Include="DataAccess\IBugTypeData.cs" />
     <Compile Include="DataAccess\IComponentBugData.cs" />
+    <Compile Include="DataAccess\IComponentBugOptionsData.cs" />
     <Compile Include="DataAccess\IComponentData.cs" />
     <Compile Include="DataAccess\IProductData.cs" />
     <Compile Include="DataAccess\IProductHardwareData.cs" />
@@ -76,8 +78,10 @@
     <Compile Include="Internal\DataAccess\SqlDataAccess.cs" />
     <Compile Include="Models\BugCommentModel.cs" />
     <Compile Include="Models\ComponentBugModel.cs" />
+    <Compile Include="Models\ComponentBugOptionsModel.cs" />
     <Compile Include="Models\ComponentModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\ComponentBugParamModel.cs" />
     <Compile Include="Models\UserModel .cs" />
     <Compile Include="Models\BugPriorityModel.cs" />
     <Compile Include="Models\BugSeverityModel.cs" />
