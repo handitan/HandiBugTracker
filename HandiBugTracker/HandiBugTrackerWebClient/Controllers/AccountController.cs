@@ -35,7 +35,7 @@ namespace HandiBugTrackerWebClient.Controllers
                     return RedirectToRoute("Main");
                 }
             }
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }
