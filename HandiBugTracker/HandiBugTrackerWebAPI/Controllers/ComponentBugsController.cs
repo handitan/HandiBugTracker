@@ -30,5 +30,11 @@ namespace HandiBugTrackerWebAPI.Controllers
             var result = await _compBugData.GetComponentBugFilterBy(bugid);
             return result;
         }
+
+        //PUT api/ComponentBugs
+        public async Task Put(ComponentBugParamModel pCompBugParamModel)
+        {
+            await _compBugData.EditComponentBug(pCompBugParamModel);
+        }
     }
 }

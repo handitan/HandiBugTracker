@@ -28,6 +28,10 @@ namespace HandiBugTrackerWebAPI.App_Start
 
         private static void registerTypes(ContainerBuilder pBuilder)
         {
+            pBuilder.RegisterType<ComponentBugOptionsData>().
+                    As<IComponentBugOptionsData>().
+                    InstancePerRequest();
+
             pBuilder.RegisterType<BugCommentData>().
                     As<IBugCommentData>().
                     InstancePerRequest();
