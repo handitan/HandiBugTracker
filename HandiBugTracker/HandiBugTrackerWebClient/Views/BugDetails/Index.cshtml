@@ -1,0 +1,134 @@
+﻿@model HandiBugTrackerWebClient.Library.Models.CompBugViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssigneeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssigneeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubStateId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubStateId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubStateName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubStateName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastModifiedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastModifiedDate)
+        </dd>
+
+    </dl>
+    <div class="panel-group">
+        @foreach (var item in Model.BugComments)
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @item.FullName
+                    <br />
+                    Description - @item.CreatedDate
+                </div>
+                <div class="panel-body">
+                    @item.Description
+                </div>
+            </div>
+        }
+    </div>
+</div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to Bug List", "Index", "BugList")
+    </p>

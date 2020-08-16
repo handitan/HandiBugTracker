@@ -25,6 +25,10 @@ namespace HandiBugTrackerWebClient.App_Start
 
         private static void registerTypes(ContainerBuilder pContainerBuilder)
         {
+            pContainerBuilder.RegisterType<BugDetailEndpoint>().
+                    As<IBugDetailEndpoint>().
+                    SingleInstance();
+
             pContainerBuilder.RegisterType<BugListEndpoint>().
                     As<IBugListEndpoint>().
                     SingleInstance();

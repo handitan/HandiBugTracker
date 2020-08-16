@@ -36,7 +36,8 @@
     {
 <tr>
     <td>
-        @Html.DisplayFor(modelItem => bugItem.Id)
+        @Html.ActionLink(bugItem.Id.ToString(),"Index","BugDetails",new { id = bugItem.Id}, null)
+
     </td>
     <td>
         @Html.DisplayFor(modelItem => bugItem.TypeName)
