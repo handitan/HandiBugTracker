@@ -23,5 +23,17 @@ namespace HandiBugTrackerDataManager.DataAccess
             var result = await _sqlDataAccess.LoadDataAsync<BugCommentModel, dynamic>(DataAccessConstant.SP_BugComment_GetByBug, new { BugId = pBugId }, DataAccessConstant.HandiBugTrackerConn);
             return result;
         }
+
+        public async Task CreateBugCommentBy(int pBugId,string pDescription, string pReporterId)
+        {
+            var itemToCreate = new
+            {
+                BugId = pBugId,
+                Description = pDescription,
+                ReporterId = pReporterId
+            };
+
+            await _sqlDataAccess.SaveDataAsync<dynamic>(DataAccessConstant.SP_BugComment_CreateBy,itemToCreate, DataAccessConstant.HandiBugTrackerConn);
+        }
     }
 }

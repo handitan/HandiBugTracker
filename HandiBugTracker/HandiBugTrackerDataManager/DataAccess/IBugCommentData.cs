@@ -7,5 +7,6 @@ namespace HandiBugTrackerDataManager.DataAccess
     public interface IBugCommentData
     {
         Task<IEnumerable<BugCommentModel>> GetBugCommentByBugId(int pBugId);
+        Task CreateBugCommentBy(int pBugId, string pDescription, string pReporterId);
     }
 }
