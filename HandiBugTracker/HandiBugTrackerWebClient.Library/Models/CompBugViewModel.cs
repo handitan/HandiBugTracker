@@ -23,5 +23,8 @@ namespace HandiBugTrackerWebClient.Library.Models
         public string SubStateName { get; set; }
         public DateTime LastModifiedDate { get; set; }
         public IList<BugCommentViewModel> BugComments { get; set; }
+
+        //client side
+        public string ClientNewComment { get; set; }
     }
 }
