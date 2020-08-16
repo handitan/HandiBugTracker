@@ -91,7 +91,10 @@
     <Build Include="dbo\Stored Procedures\spProductVersion_GetByProduct.sql" />
     <Build Include="dbo\Stored Procedures\spUser_GetAll.sql" />
     <Build Include="dbo\Stored Procedures\spComponentBug_Create.sql" />
-    <Build Include="dbo\Stored Procedures\spBugComment_CreateBy.sql" />
+    <Build Include="dbo\Stored Procedures\spComponentBug_Edit.sql" />
+    <Build Include="dbo\Stored Procedures\spBugComment_Edit.sql" />
+    <Build Include="dbo\Stored Procedures\spBugComment_Create.sql" />
+    <Build Include="dbo\Stored Procedures\spComponentBug_GetAllOptionsList.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HandiBugTrackerData.refactorlog" />

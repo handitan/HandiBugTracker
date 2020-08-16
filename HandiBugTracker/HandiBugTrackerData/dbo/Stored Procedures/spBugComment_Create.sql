@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[spBugComment_CreateBy]
+﻿CREATE PROCEDURE [dbo].[spBugComment_Create]
 	@BugId int,
 	@Description NVARCHAR(MAX),
 	@ReporterId NVARCHAR(128)
