@@ -22,11 +22,18 @@ namespace HandiBugTrackerWebAPI.Controllers
             this._bugCommentData = pBugCommentData;
         }
 
-        //GET api/BugComments
-        public async Task<IEnumerable<BugCommentModel>> Get(UriCommentBugModel pUriBugModel)
+        //GET api/BugComments/1003
+        //public async Task<IEnumerable<BugCommentModel>> Get(UriCommentBugModel pUriBugModel)
+        public async Task<IEnumerable<BugCommentModel>> Get(int bugid)
         {
-            var result = await _bugCommentData.GetBugCommentByBugId(pUriBugModel.BugId);
+            var result = await _bugCommentData.GetBugCommentByBugId(bugid);
             return result;
+        }
+
+        //POST api/BugComments
+        public async Task Post(UriCommentBugModel pUriBugModel)
+        {
+            await _bugCommentData.CreateBugCommentBy(pUriBugModel.BugId, pUriBugModel.Description, pUriBugModel.ReporterId);
         }
     }
 }
