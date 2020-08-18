@@ -4,14 +4,23 @@
 AS
 	SET NOCOUNT ON;
 
-	SELECT	CmtBug.Id,CmtBug.[Name],Btp.Id AS TypeId,Btp.Name AS TypeName,
+	SELECT	CmtBug.Id,CmtBug.[Name],
+			Btp.Id AS TypeId,Btp.Name AS TypeName,
 			Prod.Id AS ProductId,Prod.Name AS ProductName,
 			Cmp.Id AS CompId, Cmp.Name AS CompName,
-			(AssigneeUsr.FirstName + ' ' + AssigneeUsr.LastName) AS AssigneeName,
+			ReporterUsr.Id AS ReporterId, (ReporterUsr.FirstName + ' ' + ReporterUsr.LastName) AS ReporterName,
+			AssigneeUsr.Id AS AssigneeId, (AssigneeUsr.FirstName + ' ' + AssigneeUsr.LastName) AS AssigneeName,
+			QAUsr.Id AS QAId, (QAUsr.FirstName + ' ' + QAUsr.LastName) AS QAName,
+			ProdVer.Id AS ProdVerId,
+			BPty.Id AS BugPriorityId,
+			BSty.Id AS BugSeverityId,
+			ProdHw.Id AS ProductHwId,
+			ProdOS.Id AS ProductOSId,
 			BStat.Id AS StatusId, BStat.Name AS StatusName,
 			BStatSub.Id AS SubStateId, BStatSub.Name AS SubStateName,
 			CmtBug.LastModifiedDate
-	FROM dbo.ComponentBug AS CmtBug LEFT JOIN dbo.[User] AS ReporterUsr
+	FROM dbo.ComponentBug AS CmtBug 
+		 LEFT JOIN dbo.[User] AS ReporterUsr
 		 ON CmtBug.ReporterId = ReporterUsr.Id
 		 LEFT JOIN dbo.[User] AS AssigneeUsr
 		 ON CmtBug.AssigneeId = AssigneeUsr.Id
