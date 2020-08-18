@@ -36,6 +36,13 @@ namespace HandiBugTrackerDataManager.DataAccess
                     optionsList.BugPriorityList = result.Read<BugPriorityModel>().ToList();
                     optionsList.BugSeverityList = result.Read<BugSeverityModel>().ToList();
                     optionsList.BugStatusList = result.Read<BugStatusModel>().ToList();
+                    optionsList.BugStatusSubStateList = result.Read<BugStatusSubStateModel>().ToList();
+                    optionsList.BugTypeList = result.Read<BugTypeModel>().ToList();
+                    optionsList.ProductList = result.Read<ProductModel>().ToList();
+                    optionsList.ProductHardwareList = result.Read<ProductHardwareModel>().ToList();
+                    optionsList.ProductOSList = result.Read<ProductOSModel>().ToList();
+                    optionsList.ComponentList = result.Read<ComponentModel>().ToList();
+                    optionsList.ProductVersionList = result.Read<ProductVersionModel>().ToList();
 
                 }
             }
