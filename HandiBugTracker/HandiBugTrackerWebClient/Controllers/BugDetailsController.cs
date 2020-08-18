@@ -41,7 +41,7 @@ namespace HandiBugTrackerWebClient.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Save(BugAllDetailsViewModel pBugAllDetailsViewModel)
+        public ActionResult Save(BugAllDetailsViewModel pBugAllDetailsViewModel)
         {
             return RedirectToAction("Index", "SaveBug");
         }

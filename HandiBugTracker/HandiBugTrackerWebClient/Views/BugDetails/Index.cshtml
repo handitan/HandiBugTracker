@@ -1,4 +1,4 @@
-﻿@model HandiBugTrackerWebClient.Library.Models.CompBugViewModel
+﻿@model HandiBugTrackerWebClient.Models.BugAllDetailsViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -7,112 +7,153 @@
 @using (Html.BeginForm("Save", "BugDetails", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <div class="form-group">
-        <div>
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Name)
-                </dt>
+<div class="form-group">
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CompBug.Name)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Name)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CompBug.Name)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.TypeName)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CompBug.ProdVerId)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.TypeName)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CompBug.ProdVerId)
+                @Html.DropDownListFor(model => model.CompBug.ProdVerId, Model.CompBugOptions.ProductVersionSelectList)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.ProductName)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CompBug.BugPriorityId)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.ProductName)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CompBug.BugPriorityId)
+                @Html.DropDownListFor(model => model.CompBug.BugPriorityId, Model.CompBugOptions.BugPrioritySelectList)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.CompName)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CompBug.TypeName)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.CompName)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CompBug.TypeName)
+                @Html.DropDownListFor(model => model.CompBug.TypeId, Model.CompBugOptions.BugTypeSelectList)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.AssigneeName)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CompBug.ProductName)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.AssigneeName)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CompBug.ProductName)
+                @Html.DropDownListFor(model => model.CompBug.ProductId, Model.CompBugOptions.ProductSelectList)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.StatusName)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CompBug.CompName)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.StatusName)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CompBug.CompName)
+                @Html.DropDownListFor(model => model.CompBug.CompId, Model.CompBugOptions.ComponentSelectList)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.SubStateName)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CompBug.AssigneeName)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.SubStateName)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CompBug.AssigneeName)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.LastModifiedDate)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CompBug.StatusName)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.LastModifiedDate)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CompBug.StatusName)
+                @Html.DropDownListFor(model => model.CompBug.StatusId, Model.CompBugOptions.BugStatusSelectList)
+            </dd>
 
-            </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.CompBug.SubStateName)
 
-            @Html.HiddenFor(model => model.Id)
-            @Html.HiddenFor(model => model.TypeId)
-            @Html.HiddenFor(model => model.ProductId)
-            @Html.HiddenFor(model => model.CompId)
-            @Html.HiddenFor(model => model.StatusId)
-            @Html.HiddenFor(model => model.SubStateId)
+            </dt>
 
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.ClientNewComment, new { @class = "form-control z-depth-1", @cols = 100, @rows = 10, @placeholder = "Write new comment here..." })
-                @Html.ValidationMessageFor(model => model.ClientNewComment, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save Changes" class="btn btn-default" />
-            </div>
-        </div>
+            <dd>
+                @Html.DisplayFor(model => model.CompBug.SubStateName)
+                @Html.DropDownListFor(model => model.CompBug.SubStateId, Model.CompBugOptions.BugStatusSubStateSelectList)
+            </dd>
 
-        <div class="panel-group">
-            @foreach (var item in Model.BugComments)
-            {
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        @item.FullName
-                        <br />
-                        Description - @item.CreatedDate
-                    </div>
-                    <div class="panel-body">
-                        @item.Description
-                    </div>
-                </div>
-            }
+            <dt>
+                @Html.DisplayNameFor(model => model.CompBug.ProductHwId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CompBug.ProductHwId)
+                @Html.DropDownListFor(model => model.CompBug.ProductHwId, Model.CompBugOptions.ProductHwSelectList)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CompBug.ProductOSId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CompBug.ProductOSId)
+                @Html.DropDownListFor(model => model.CompBug.ProductOSId, Model.CompBugOptions.ProductOSSelectList)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CompBug.LastModifiedDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CompBug.LastModifiedDate)
+            </dd>
+
+        </dl>
+
+        @Html.HiddenFor(model => model.CompBug.Id)
+        @Html.HiddenFor(model => model.CompBug.TypeId)
+        @Html.HiddenFor(model => model.CompBug.ProductId)
+        @Html.HiddenFor(model => model.CompBug.CompId)
+        @Html.HiddenFor(model => model.CompBug.StatusId)
+        @Html.HiddenFor(model => model.CompBug.SubStateId)
+
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.CompBug.ClientNewComment, new { @class = "form-control z-depth-1", @cols = 100, @rows = 10, @placeholder = "Write new comment here..." })
+            @Html.ValidationMessageFor(model => model.CompBug.ClientNewComment, "", new { @class = "text-danger" })
         </div>
     </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save Changes" class="btn btn-default" />
+        </div>
+    </div>
+    <div class="panel-group">
+        @foreach (var item in Model.CompBug.BugComments)
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @item.FullName
+                    <br />
+                    Description - @item.CreatedDate
+                </div>
+                <div class="panel-body">
+                    @item.Description
+                </div>
+            </div>
+        }
+    </div>
+</div>
 }
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CompBug.Id }) |
     @Html.ActionLink("Back to Bug List", "Index", "BugList")
 </p>
