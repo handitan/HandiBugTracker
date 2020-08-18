@@ -16,7 +16,20 @@ namespace HandiBugTrackerDataManager.Models
         public string ProductName { get; set; }
         public int CompId { get; set; }
         public string CompName { get; set; }
+        
+        public string ReporterId { get; set; }
+        public string ReporterName { get; set; }
+        public string AssigneeId { get; set; }
         public string AssigneeName { get; set; }
+        public string QAId { get; set; }
+        public string QAName { get; set; }
+
+        public int ProdVerId { get; set; }
+        public int BugPriorityId { get; set; }
+        public int BugSeverityId { get; set; }
+        public int ProductHwId { get; set; }
+        public int ProductOSId { get; set; }
+
         public int StatusId { get; set; }
         public string StatusName { get; set; }
         public int SubStateId { get; set; }
