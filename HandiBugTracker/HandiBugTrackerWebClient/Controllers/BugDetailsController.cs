@@ -22,7 +22,7 @@ namespace HandiBugTrackerWebClient.Controllers
             this._compBugAllOptionsEndPoint = pCompBugAllOptionsEndPoint;
         }
         // GET: BugDetails
-        public async Task<ActionResult> Index(int id)
+        public async Task<ActionResult> Edit(int id)
         {
             var bugDetails = await _bugDetailsEndPoint.GetByBugId(id);
             var bugOptions = await _compBugAllOptionsEndPoint.GetAll();
@@ -41,9 +41,18 @@ namespace HandiBugTrackerWebClient.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Save(BugAllDetailsViewModel pBugAllDetailsViewModel)
+        public async Task<ActionResult> Edit(BugAllDetailsViewModel pBugAllDetailsViewModel)
         {
-            return RedirectToAction("Index", "SaveBug");
+            try
+            {
+                await _bugDetailsEndPoint.Edit(pBugAllDetailsViewModel.CompBug);
+                return RedirectToAction("Index", "SaveBug");
+            }
+            catch
+            {
+                return View("Error");
+            }
+            
         }
     }
 }

@@ -200,7 +200,7 @@
     <Content Include="Views\BugList\Index.cshtml" />
     <Content Include="Views\Shared\_BugTableView.cshtml" />
     <Content Include="Views\Shared\_MainLayout.cshtml" />
-    <Content Include="Views\BugDetails\Index.cshtml" />
+    <Content Include="Views\BugDetails\Edit.cshtml" />
     <Content Include="Views\SaveBug\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

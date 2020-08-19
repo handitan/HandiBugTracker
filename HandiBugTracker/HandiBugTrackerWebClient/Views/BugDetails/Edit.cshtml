@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-@using (Html.BeginForm("Save", "BugDetails", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Edit", "BugDetails", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
 <div class="form-group">
@@ -16,7 +16,7 @@
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.CompBug.Name)
+                @Html.EditorFor(model => model.CompBug.Name, new { htmlAttributes = new { @class = "form-control" } })
             </dd>
 
             <dt>
@@ -35,6 +35,15 @@
             <dd>
                 @Html.DisplayFor(model => model.CompBug.BugPriorityId)
                 @Html.DropDownListFor(model => model.CompBug.BugPriorityId, Model.CompBugOptions.BugPrioritySelectList)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CompBug.BugSeverityId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CompBug.BugSeverityId)
+                @Html.DropDownListFor(model => model.CompBug.BugSeverityId, Model.CompBugOptions.BugSeveritySelectList)
             </dd>
 
             <dt>
