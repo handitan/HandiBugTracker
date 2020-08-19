@@ -31,6 +31,10 @@ namespace HandiBugTrackerWebClient.Controllers
                 var bugAllDetails = new BugAllDetailsViewModel();
                 bugAllDetails.CompBug = bugDetails[0];
                 bugAllDetails.CompBugOptions = bugOptions;
+
+                TempData["ReporterId"] = bugAllDetails.CompBug.ReporterId;
+                TempData["AssigneeId"] = bugAllDetails.CompBug.AssigneeId;
+                TempData["QAId"] = bugAllDetails.CompBug.QAId;
                 return View(bugAllDetails);
             }
             else
@@ -45,6 +49,10 @@ namespace HandiBugTrackerWebClient.Controllers
         {
             try
             {
+                pBugAllDetailsViewModel.CompBug.ReporterId = TempData["ReporterId"].ToString();
+                pBugAllDetailsViewModel.CompBug.AssigneeId = TempData["AssigneeId"].ToString();
+                pBugAllDetailsViewModel.CompBug.QAId = TempData["QAId"].ToString();
+
                 await _bugDetailsEndPoint.Edit(pBugAllDetailsViewModel.CompBug);
                 return RedirectToAction("Index", "SaveBug");
             }

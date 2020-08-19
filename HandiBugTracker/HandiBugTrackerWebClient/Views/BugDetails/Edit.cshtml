@@ -129,12 +129,6 @@
         </dl>
 
         @Html.HiddenFor(model => model.CompBug.Id)
-        @Html.HiddenFor(model => model.CompBug.TypeId)
-        @Html.HiddenFor(model => model.CompBug.ProductId)
-        @Html.HiddenFor(model => model.CompBug.CompId)
-        @Html.HiddenFor(model => model.CompBug.StatusId)
-        @Html.HiddenFor(model => model.CompBug.SubStateId)
-
         <div class="col-md-10">
             @Html.TextAreaFor(model => model.CompBug.ClientNewComment, new { @class = "form-control z-depth-1", @cols = 100, @rows = 10, @placeholder = "Write new comment here..." })
             @Html.ValidationMessageFor(model => model.CompBug.ClientNewComment, "", new { @class = "text-danger" })
