@@ -85,6 +85,28 @@ namespace HandiBugTrackerWebClient.Library.Api
                     throw new Exception(response.ReasonPhrase);
                 }
             }
+
+            //====================
+
+            if (!string.IsNullOrWhiteSpace(pComBugViewModel.ClientNewComment) &&
+                    !string.IsNullOrEmpty(pComBugViewModel.ClientNewComment))
+            {
+                var commentValues = new Dictionary<string, string>()
+                {
+                    {"BugId", pComBugViewModel.Id.ToString()},
+                    {"Description", pComBugViewModel.ClientNewComment},
+                    {"ReporterId", pComBugViewModel.ReporterId}
+                };
+                var urlEncodedConment = new FormUrlEncodedContent(commentValues);
+                string bugCommentsUriFormat = string.Format("api/BugComments?bugid={0}", pComBugViewModel.Id);
+                using (HttpResponseMessage response = await _apiHelper.ApiClient.PostAsync(bugCommentsUriFormat, urlEncodedConment))
+                {
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw new Exception(response.ReasonPhrase);
+                    }
+                }
+            }
         }
     }
 }
