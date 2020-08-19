@@ -50,5 +50,41 @@ namespace HandiBugTrackerWebClient.Library.Api
 
             return result;
         }
+
+        public async Task Edit(CompBugViewModel pComBugViewModel)
+        {
+            //Based on UriComponentBugModel
+            var values = new Dictionary<string, string>()
+            {
+                {"Id",pComBugViewModel.Id.ToString()},
+                {"Name",pComBugViewModel.Name},
+                {"ReporterId",pComBugViewModel.ReporterId},
+                {"AssigneeId",pComBugViewModel.AssigneeId},
+                {"QAContactId",pComBugViewModel.QAId},
+
+                {"ProductId",pComBugViewModel.ProductId.ToString()},
+                {"ProductVersionId",pComBugViewModel.ProdVerId.ToString()},
+                {"BugStatusId",pComBugViewModel.StatusId.ToString()},
+
+                {"BugStatusSubStateId",pComBugViewModel.SubStateId.ToString()},
+                {"BugPriorityId",pComBugViewModel.BugPriorityId.ToString()},
+                {"BugSeverityId",pComBugViewModel.BugSeverityId.ToString()},
+
+                {"BugTypeId",pComBugViewModel.TypeId.ToString()},
+                {"ProductHardwareId",pComBugViewModel.ProductHwId.ToString()},
+                {"ProductOSId",pComBugViewModel.ProductOSId.ToString()},
+                {"ComponentId",pComBugViewModel.CompId.ToString()}
+            };
+
+            var urlEncodedContent = new FormUrlEncodedContent(values);
+
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.PutAsync("/api/ComponentBugs", urlEncodedContent))
+            {
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
     }
 }
