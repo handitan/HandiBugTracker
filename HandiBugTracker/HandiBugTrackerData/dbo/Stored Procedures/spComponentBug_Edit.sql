@@ -18,6 +18,15 @@ AS
 BEGIN
 	SET NOCOUNT ON;
 
+	IF @ReporterId IS NULL
+		SELECT @ReporterId = ReporterId FROM dbo.ComponentBug WHERE Id = @Id
+
+	IF @AssigneeId IS NULL
+		SELECT @AssigneeId = AssigneeId FROM dbo.ComponentBug WHERE Id = @Id
+
+	IF @QAContactId IS NULL
+		SELECT @QAContactId = QAContactId FROM dbo.ComponentBug WHERE Id = @Id
+
 	UPDATE dbo.ComponentBug
 	SET [Name] = @Name,
 		ReporterId = @ReporterId,
