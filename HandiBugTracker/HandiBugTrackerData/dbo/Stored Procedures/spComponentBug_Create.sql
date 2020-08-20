@@ -17,14 +17,19 @@ AS
 BEGIN
 	SET NOCOUNT ON;
 
+	DECLARE @NewRecTable table([Id] int);
+
 	INSERT INTO dbo.ComponentBug 
 	([Name],ReporterId,AssigneeId,QAContactId,
 	 ProductId,ProductVersionId,BugStatusId,
 	 BugStatusSubStateId,BugPriorityId,BugSeverityId,BugTypeId,
 	 ProductHardwareId,ProductOSId,ComponentId)
+	 OUTPUT inserted.Id INTO @NewRecTable
 	 VALUES
 	 (@Name,@ReporterId,@AssigneeId,@QAContactId,
 	  @ProductId,@ProductVersionId,@BugStatusId,
 	  @BugStatusSubStateId,@BugPriorityId,@BugSeverityId,@BugTypeId,
 	  @ProductHardwareId,@ProductOSId,@ComponentId)
+
+	  SELECT [Id] FROM @NewRecTable
 END
