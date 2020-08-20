@@ -8,5 +8,9 @@ namespace HandiBugTrackerDataManager.DataAccess
     {
         Task<IEnumerable<ComponentBugModel>> GetComponentBugFilterBy(int pBugId = -1, string pAssigneeId = null);
         Task EditComponentBug(ComponentBugParamModel pCompBugParamModel);
+        Task<IEnumerable<int>> CreateComponentBug(ComponentBugPostParamModel pCompBugParamModel);
+
+
+
     }
 }

@@ -32,5 +32,12 @@ namespace HandiBugTrackerDataManager.DataAccess
                pCompBugParamModel,
                DataAccessConstant.HandiBugTrackerConn);
         }
+        public async Task<IEnumerable<int>> CreateComponentBug(ComponentBugPostParamModel pCompBugParamModel)
+        {
+            var result = await _sqlDataAccess.LoadDataAsync<int, ComponentBugPostParamModel>(DataAccessConstant.SP_ComponentBug_Create,
+               pCompBugParamModel,
+               DataAccessConstant.HandiBugTrackerConn);
+            return result;
+        }
     }
 }

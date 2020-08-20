@@ -79,6 +79,7 @@
     <Compile Include="Models\BugCommentModel.cs" />
     <Compile Include="Models\ComponentBugModel.cs" />
     <Compile Include="Models\ComponentBugOptionsModel.cs" />
+    <Compile Include="Models\ComponentBugPostParamModel.cs" />
     <Compile Include="Models\ComponentModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\ComponentBugParamModel.cs" />
