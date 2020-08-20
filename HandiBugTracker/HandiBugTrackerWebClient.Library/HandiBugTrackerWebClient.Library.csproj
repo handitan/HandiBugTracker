@@ -72,6 +72,8 @@
   <ItemGroup>
     <Compile Include="Api\APIHelper.cs" />
     <Compile Include="Api\BugDetailEndpoint.cs" />
+    <Compile Include="Api\IUsersEndpoint.cs" />
+    <Compile Include="Api\UsersEndpoint.cs" />
     <Compile Include="Api\BugListEndpoint.cs" />
     <Compile Include="Api\CompBugAllOptionsEndPoint.cs" />
     <Compile Include="Api\IAPIHelper.cs" />
@@ -92,6 +94,7 @@
     <Compile Include="Models\CompBugOptionsViewModel.cs" />
     <Compile Include="Models\CompBugViewModel.cs" />
     <Compile Include="Models\TokenViewModel.cs" />
+    <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
