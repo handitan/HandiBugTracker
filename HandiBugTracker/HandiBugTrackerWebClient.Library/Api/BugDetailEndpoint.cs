@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using HandiBugTrackerWebClient.Library.Models;
+using Newtonsoft.Json;
 
 namespace HandiBugTrackerWebClient.Library.Api
 {
@@ -108,5 +110,72 @@ namespace HandiBugTrackerWebClient.Library.Api
                 }
             }
         }
+
+        public async Task Create(CompBugViewModel pComBugViewModel)
+        {
+            //Based on UriComponentBugModel
+            var values = new Dictionary<string, string>()
+            {
+                {"Name",pComBugViewModel.Name},
+                {"ReporterId",pComBugViewModel.ReporterId},
+                {"AssigneeId",pComBugViewModel.AssigneeId},
+                {"QAContactId",pComBugViewModel.QAId},
+
+                {"ProductId",pComBugViewModel.ProductId.ToString()},
+                {"ProductVersionId",pComBugViewModel.ProdVerId.ToString()},
+                {"BugStatusId",pComBugViewModel.StatusId.ToString()},
+
+                {"BugStatusSubStateId",pComBugViewModel.SubStateId.ToString()},
+                {"BugPriorityId",pComBugViewModel.BugPriorityId.ToString()},
+                {"BugSeverityId",pComBugViewModel.BugSeverityId.ToString()},
+
+                {"BugTypeId",pComBugViewModel.TypeId.ToString()},
+                {"ProductHardwareId",pComBugViewModel.ProductHwId.ToString()},
+                {"ProductOSId",pComBugViewModel.ProductOSId.ToString()},
+                {"ComponentId",pComBugViewModel.CompId.ToString()}
+            };
+
+            var urlEncodedContent = new FormUrlEncodedContent(values);
+
+            IList<int> newIdList;
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.PostAsync("/api/ComponentBugs", urlEncodedContent))
+            {
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+                else
+                {
+                    var valuesJSON = await response.Content.ReadAsStringAsync();
+                    newIdList = JsonConvert.DeserializeObject<IList<int>>(valuesJSON);
+                    
+                }
+            }
+
+            //====================
+
+            if (newIdList != null && newIdList.Count > 0)
+            {
+                if (!string.IsNullOrWhiteSpace(pComBugViewModel.ClientNewComment) &&
+                        !string.IsNullOrEmpty(pComBugViewModel.ClientNewComment))
+                {
+                    var commentValues = new Dictionary<string, string>()
+                    {
+                        {"BugId", newIdList[0].ToString()},
+                        {"Description", pComBugViewModel.ClientNewComment},
+                        {"ReporterId", pComBugViewModel.ReporterId}
+                    };
+                    var urlEncodedConment = new FormUrlEncodedContent(commentValues);
+                    using (HttpResponseMessage response = await _apiHelper.ApiClient.PostAsync("api/BugComments", urlEncodedConment))
+                    {
+                        if (!response.IsSuccessStatusCode)
+                        {
+                            throw new Exception(response.ReasonPhrase);
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

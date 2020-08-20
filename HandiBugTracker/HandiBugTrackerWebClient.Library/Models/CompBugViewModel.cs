@@ -10,6 +10,8 @@ namespace HandiBugTrackerWebClient.Library.Models
     public class CompBugViewModel
     {
         public int Id { get; set; }
+
+        [Display(Name = "Summary")]
         public string Name { get; set; }
         public int TypeId { get; set; }
         public string TypeName { get; set; }
@@ -43,7 +45,7 @@ namespace HandiBugTrackerWebClient.Library.Models
         public DateTime LastModifiedDate { get; set; }
 
         //client side
-        public IList<BugCommentViewModel> BugComments { get; set; }
+        public IList<BugCommentViewModel> BugComments { get; set; } = new List<BugCommentViewModel>();
         public string ClientNewComment { get; set; }
     }
 }

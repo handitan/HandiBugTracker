@@ -8,5 +8,6 @@ namespace HandiBugTrackerWebClient.Library.Api
     {
         Task<IList<CompBugViewModel>> GetByBugId(int pId);
         Task Edit(CompBugViewModel pComBugViewModel);
+        Task Create(CompBugViewModel pComBugViewModel);
     }
 }
