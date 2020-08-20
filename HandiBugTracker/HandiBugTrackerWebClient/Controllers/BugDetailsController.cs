@@ -14,14 +14,60 @@ namespace HandiBugTrackerWebClient.Controllers
     {
         private readonly IBugDetailEndpoint _bugDetailsEndPoint;
         private readonly ICompBugAllOptionsEndPoint _compBugAllOptionsEndPoint;
+        private readonly PeopleViewModel _peopleViewModel;
 
         public BugDetailsController(){}
-        public BugDetailsController(IBugDetailEndpoint pBugDetailsEndPoint, ICompBugAllOptionsEndPoint pCompBugAllOptionsEndPoint)
+        public BugDetailsController(
+            IBugDetailEndpoint pBugDetailsEndPoint, 
+            ICompBugAllOptionsEndPoint pCompBugAllOptionsEndPoint,
+            PeopleViewModel pPeopleViewModel)
         {
             this._bugDetailsEndPoint = pBugDetailsEndPoint;
             this._compBugAllOptionsEndPoint = pCompBugAllOptionsEndPoint;
+            this._peopleViewModel = pPeopleViewModel;
         }
+
+        [HttpGet]
+        public async Task<ActionResult> Create()
+        {
+            var bugOptions = await _compBugAllOptionsEndPoint.GetAll();
+            var bugAllDetails = new BugAllDetailsViewModel()
+            {
+                CompBug = new CompBugViewModel(),
+                CompBugOptions = bugOptions
+            };
+
+            //TODO revisit this later
+            bugAllDetails.CompBug.AssigneeName = _peopleViewModel.LoggedInFullName;
+            TempData["ReporterId"] = _peopleViewModel.LoggedInUserId;
+            TempData["AssigneeId"] = _peopleViewModel.LoggedInUserId;
+            TempData["QAId"] = _peopleViewModel.LoggedInUserId;
+
+            return View(bugAllDetails);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(BugAllDetailsViewModel pBugAllDetailsViewModel)
+        {
+            try
+            {
+                pBugAllDetailsViewModel.CompBug.ReporterId = TempData["ReporterId"].ToString();
+                pBugAllDetailsViewModel.CompBug.AssigneeId = TempData["AssigneeId"].ToString();
+                pBugAllDetailsViewModel.CompBug.QAId = TempData["QAId"].ToString();
+
+                await _bugDetailsEndPoint.Create(pBugAllDetailsViewModel.CompBug);
+                return RedirectToAction("Index", "SaveBug");
+            }
+            catch
+            {
+                return View("Error");
+            }
+        }
+
+
         // GET: BugDetails
+        [HttpGet]
         public async Task<ActionResult> Edit(int id)
         {
             var bugDetails = await _bugDetailsEndPoint.GetByBugId(id);

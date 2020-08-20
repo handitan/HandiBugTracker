@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
 using HandiBugTrackerWebClient.Library.Api;
+using HandiBugTrackerWebClient.Models;
 
 namespace HandiBugTrackerWebClient.App_Start
 {
@@ -25,6 +26,13 @@ namespace HandiBugTrackerWebClient.App_Start
 
         private static void registerTypes(ContainerBuilder pContainerBuilder)
         {
+            pContainerBuilder.RegisterType<PeopleViewModel>()
+                .SingleInstance();
+
+            pContainerBuilder.RegisterType<UsersEndpoint>().
+                As<IUsersEndpoint>().
+                SingleInstance();
+
             pContainerBuilder.RegisterType<CompBugAllOptionsEndPoint>().
                     As<ICompBugAllOptionsEndPoint>().
                     SingleInstance();

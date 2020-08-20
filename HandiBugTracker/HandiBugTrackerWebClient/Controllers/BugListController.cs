@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using HandiBugTrackerWebClient.Library.Api;
+using HandiBugTrackerWebClient.Models;
 using X.PagedList;
 
 namespace HandiBugTrackerWebClient.Controllers
@@ -14,7 +15,8 @@ namespace HandiBugTrackerWebClient.Controllers
         private readonly IBugListEndpoint _bugListEndpoint;
 
         public BugListController(){}
-        public BugListController(IBugListEndpoint pBugListEndpoint)
+        public BugListController(
+            IBugListEndpoint pBugListEndpoint)
         {
             this._bugListEndpoint = pBugListEndpoint;
         }
@@ -22,7 +24,7 @@ namespace HandiBugTrackerWebClient.Controllers
         public async Task<ActionResult> Index()
         {
             var bugList = await _bugListEndpoint.GetAll();
-            int pageSize = 3;
+            int pageSize = 20;
             int pageNumber = 1;// (page ?? 1);
             var pagedList = await bugList.ToPagedListAsync(pageNumber, pageSize);
             return View(pagedList);

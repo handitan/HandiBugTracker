@@ -6,7 +6,7 @@
 
 @Html.ActionLink("Back to Bug List", "Index", "BugList")
 <hr />
-@using (Html.BeginForm("Edit", "BugDetails", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Create", "BugDetails", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-group">
@@ -67,7 +67,7 @@
                 <dd>
                     @Html.DropDownListFor(model => model.CompBug.CompId, Model.CompBugOptions.ComponentSelectList)
                 </dd>
-
+                <!--
                 <dt>
                     @Html.DisplayNameFor(model => model.CompBug.AssigneeName)
                 </dt>
@@ -75,7 +75,7 @@
                 <dd>
                     @Html.DisplayFor(model => model.CompBug.AssigneeName)
                 </dd>
-
+                 -->
                 <dt>
                     @Html.DisplayNameFor(model => model.CompBug.StatusName)
                 </dt>
