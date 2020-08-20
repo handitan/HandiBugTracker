@@ -156,6 +156,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModel.cs" />
     <Compile Include="Models\BugAllDetailsViewModel.cs" />
+    <Compile Include="Models\PeopleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +203,7 @@
     <Content Include="Views\Shared\_MainLayout.cshtml" />
     <Content Include="Views\BugDetails\Edit.cshtml" />
     <Content Include="Views\SaveBug\Index.cshtml" />
+    <Content Include="Views\BugDetails\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
