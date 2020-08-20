@@ -36,5 +36,12 @@ namespace HandiBugTrackerWebAPI.Controllers
         {
             await _compBugData.EditComponentBug(pCompBugParamModel);
         }
+
+        //POST api/ComponentBugs
+        public async Task<IEnumerable<int>> Post(ComponentBugPostParamModel pCompBugParamModel)
+        {
+            var result = await _compBugData.CreateComponentBug(pCompBugParamModel);
+            return result;
+        }
     }
 }
