@@ -108,5 +108,22 @@ namespace HandiBugTrackerWebClient.Controllers
             }
             
         }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Delete(int id)
+        {
+            try
+            {
+                await _bugDetailsEndPoint.Delete(id);
+                //return RedirectToAction("Index", "SaveBug");
+                return Json(new { success = true, redirectUrl = "/SaveBug/Index" });
+            }
+            catch
+            {
+                return View("Error");
+            }
+        }
     }
 }

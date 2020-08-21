@@ -5,12 +5,38 @@
 }
 
 @Html.ActionLink("Back to Bug List", "Index", "BugList")
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteModal">
+    Delete
+</button>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Do you want to delete this bug?
+            </div>
+            <div class="modal-footer">
+                <button id="btnConfirm" type="button" class="btn btn-primary">Yes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <hr />
 @using (Html.BeginForm("Edit", "BugDetails", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-group">
         <div>
+            <h4>Bug# @Html.DisplayFor(model => model.CompBug.Id)</h4>
             <dl class="dl-horizontal">
                 <dt>
                     @Html.DisplayNameFor(model => model.CompBug.Name)
@@ -118,7 +144,6 @@
                 </dd>
 
             </dl>
-
             @Html.HiddenFor(model => model.CompBug.Id)
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.CompBug.ClientNewComment, new { @class = "form-control z-depth-1", @cols = 100, @rows = 10, @placeholder = "Write new comment here..." })
@@ -146,5 +171,31 @@
             }
         </div>
     </div>
+}
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#btnConfirm').click(function () {
+                var token = $('[name=__RequestVerificationToken]').val();
+                //$('#deleteModal').modal('toggle');
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Delete")',
+                    dataType: "json",
+                    data: {
+                        '__RequestVerificationToken':token,
+                        'id': $("input[name='CompBug.Id']").val()
+                    },
+                    success: function (response) {
+                        window.location.href = response.redirectUrl;
+                    }
+                });
+            });
+        })
+    </script>
 }
 
