@@ -39,5 +39,12 @@ namespace HandiBugTrackerDataManager.DataAccess
                DataAccessConstant.HandiBugTrackerConn);
             return result;
         }
+
+        public async Task DeleteComponentBug(int id)
+        {
+            await _sqlDataAccess.SaveDataAsync<dynamic>(DataAccessConstant.SP_ComponentBug_Delete,
+               new { Id = id },
+               DataAccessConstant.HandiBugTrackerConn);
+        }
     }
 }

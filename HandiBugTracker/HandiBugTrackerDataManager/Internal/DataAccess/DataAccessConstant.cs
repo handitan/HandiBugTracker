@@ -23,13 +23,16 @@ namespace HandiBugTrackerDataManager.Internal.DataAccess
         public const string SP_BugComment_GetByBug = "dbo.spBugComment_GetByBug";
         public const string SP_BugComment_Create = "dbo.spBugComment_Create";
         public const string SP_BugComment_Edit = "dbo.spBugComment_Edit";
+        public const string SP_BugComment_Delete = "dbo.spBugComment_Delete";
 
         public const string SP_User_GetAll = "dbo.spUser_GetAll";
 
         public const string SP_Component_GetByProduct = "dbo.spComponent_GetByProduct";
         public const string SP_ComponentBug_GetFilterBy =  "dbo.spComponentBug_GetFilterBy";
+
         public const string SP_ComponentBug_Edit = "dbo.spComponentBug_Edit";
         public const string SP_ComponentBug_Create = "spComponentBug_Create";
+        public const string SP_ComponentBug_Delete = "dbo.spComponentBug_Delete";
 
         public const string SP_ComponentBug_GetAllOptions = "dbo.spComponentBug_GetAllOptionsList";
 

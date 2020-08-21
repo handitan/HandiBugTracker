@@ -47,5 +47,15 @@ namespace HandiBugTrackerDataManager.DataAccess
 
             await _sqlDataAccess.SaveDataAsync<dynamic>(DataAccessConstant.SP_BugComment_Edit, itemToEdit, DataAccessConstant.HandiBugTrackerConn);
         }
+
+        public async Task DeleteBugCommentBy(int pBugId)
+        {
+            var itemToDelete = new
+            {
+                BugId = pBugId
+            };
+
+            await _sqlDataAccess.SaveDataAsync<dynamic>(DataAccessConstant.SP_BugComment_Delete, itemToDelete, DataAccessConstant.HandiBugTrackerConn);
+        }
     }
 }
