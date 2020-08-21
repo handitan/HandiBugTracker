@@ -111,6 +111,29 @@ namespace HandiBugTrackerWebClient.Library.Api
             }
         }
 
+        public async Task Delete(int pId)
+        {
+            //==========================================================
+            //Since BugComments has FK to Bug, bugcomments have to be deleted 1st
+            //before deleting the actual bug
+            string bugCommentsUriFormat = string.Format("api/BugComments?bugid={0}", pId);
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.DeleteAsync(bugCommentsUriFormat))
+            {
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+
+            string componentBugUriFormat = string.Format("api/ComponentBugs?id={0}", pId);
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.DeleteAsync(componentBugUriFormat))
+            {
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
         public async Task Create(CompBugViewModel pComBugViewModel)
         {
             //Based on UriComponentBugModel
