@@ -35,5 +35,11 @@ namespace HandiBugTrackerWebAPI.Controllers
         {
             await _bugCommentData.CreateBugCommentBy(pUriBugModel.BugId, pUriBugModel.Description, pUriBugModel.ReporterId);
         }
+
+        //DELETE api/BugComments/1003
+        public async Task Delete(int bugid)
+        {
+            await _bugCommentData.DeleteBugCommentBy(bugid);
+        }
     }
 }

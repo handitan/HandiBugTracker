@@ -43,5 +43,11 @@ namespace HandiBugTrackerWebAPI.Controllers
             var result = await _compBugData.CreateComponentBug(pCompBugParamModel);
             return result;
         }
+
+        //DELETE api/ComponentBugs
+        public async Task Delete(int id)
+        {
+            await _compBugData.DeleteComponentBug(id);
+        }
     }
 }
