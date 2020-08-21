@@ -97,6 +97,8 @@
     <Build Include="dbo\Stored Procedures\spComponentBug_GetAllOptionsList.sql" />
     <Build Include="dbo\Stored Procedures\spComponent_GetAll.sql" />
     <Build Include="dbo\Stored Procedures\spProductVersion_GetAll.sql" />
+    <Build Include="dbo\Stored Procedures\spComponentBug_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\spBugComment_Delete.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HandiBugTrackerData.refactorlog" />
