@@ -4,14 +4,11 @@
     ViewBag.Title = "Index";
 }
 
+<!--
 <div style="margin-top:4px">
     @Html.ActionLink("Back to Bug List", "Index", "BugList", new { @class = "btn btn-primary" })
-
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteModal">
-        Delete
-    </button>
 </div>
-
+-->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -32,19 +29,28 @@
     </div>
 </div>
 
-<hr />
 @using (Html.BeginForm("Edit", "BugDetails", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-group">
         <div>
-            <h4>Bug# @Html.DisplayFor(model => model.CompBug.Id)</h4>
+            <div style="display:inline-block;width:100%;margin-top:4px">
+                <div style="float:left">
+                    <h4>Bug# @Html.DisplayFor(model => model.CompBug.Id)</h4>
+                </div>
 
-            <section class="bugModule">
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" style="float:right">
+                    Delete
+                </button>
+            </div>
+
+
+
+            <section class="bugModule" style="margin-top:0px">
                 <div class="bugModule-content" id="bugModule-cat-content">
                     <div class="bugFields-lhs">
                         <div class="bugField" id="bugFiled-product">
-                            <div class="bugName">
+                            <div class="bugName" style="vertical-align:middle">
                                 @Html.DisplayNameFor(model => model.CompBug.Name):
                             </div>
                             <div class="bugValue">
@@ -202,7 +208,7 @@
         </div>
         <div class="form-group" style="margin-top:4px;text-align:right;">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save Changes" class="btn btn-default" />
+                <input type="submit" value="Save Changes" class="btn btn-success" />
             </div>
         </div>
         <div class="panel-group">
