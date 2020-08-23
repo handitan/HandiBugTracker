@@ -27,3 +27,61 @@ textarea {
 .login-form {
     margin: 0 auto;
 }
+
+.bugModule {
+    margin-top: 8px;
+    background-color: rgb(250,251,252);
+    box-shadow: 0 1px 4px rgba(40,41,42,.2);
+}
+
+.bugModule-header {
+    color: rgb(80,81,82);
+    background: rgb(240,241,242);
+}
+
+.bugModule-title {
+    display: table-cell;
+    padding-left: 5px;
+    font-size: 13px;
+}
+
+.bugModule-content {
+    display:flex;
+    flex-wrap:wrap;
+    padding:5px;
+}
+
+.bugModule .bugFields-lhs, .bugModule .bugFields-rhs {
+    flex: none;
+    width: 50%;
+    min-width: 450px;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.bugModule .bugField {
+    display: table;
+    box-sizing: border-box;
+    margin: 4px 0;
+    width: 100%;
+    vertical-align: top;
+}
+
+.bugModule .bugField .bugName {
+    display: table-cell;
+    padding-right: 10px;
+    width: 100px;
+    min-width: 100px;
+    color: rgb(80,81,82);
+    text-align: right;
+    vertical-align: top;
+}
+
+.bugModule .bugField .bugValue {
+    display: table-cell;
+    padding-right: 10px;
+}
+
+.bugTextarea {
+    max-width: none;
+}
