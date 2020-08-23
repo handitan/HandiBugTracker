@@ -39,6 +39,7 @@ namespace HandiBugTrackerWebClient.Controllers
 
             //TODO revisit this later
             bugAllDetails.CompBug.AssigneeName = _peopleViewModel.LoggedInFullName;
+            bugAllDetails.CompBug.StatusId = bugAllDetails.CompBugOptions.BugStatusList.First().Id;
             bugAllDetails.CompBug.SubStateId = bugAllDetails.CompBugOptions.BugStatusSubStateList.First().Id;
             TempData["ReporterId"] = _peopleViewModel.LoggedInUserId;
             TempData["AssigneeId"] = _peopleViewModel.LoggedInUserId;

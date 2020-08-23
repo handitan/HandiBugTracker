@@ -74,25 +74,6 @@
                     </div>
                 </div>
             </section>
-
-            <section class="bugModule" id="bugModule-track">
-                <header id="bugModule-track-header" class="bugModule-header">
-                    <h2 class="bugModule-title" id=bugModule-track-title>Tracking</h2>
-                </header>
-                <div class="bugModule-content" id="bugModule-track-content">
-                    <div class="bugFields-lhs">
-                        <div class="bugField" id="bugFiled-stat">
-                            <div class="bugName">
-                                @Html.DisplayNameFor(model => model.CompBug.StatusId):
-                            </div>
-                            <div class="bugValue">
-                                @Html.DropDownListFor(model => model.CompBug.StatusId, Model.CompBugOptions.BugStatusSelectList)
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <section class="bugModule" id="bugModule-ppl">
                 <header id="bugModule-ppl-header" class="bugModule-header">
                     <h2 class="bugModule-title" id=bugModule-ppl-title>People</h2>
@@ -145,6 +126,7 @@
                 </div>
             </section>
 
+            @Html.HiddenFor(model => model.CompBug.StatusId)
             @Html.HiddenFor(model => model.CompBug.SubStateId)
             @Html.HiddenFor(model => model.CompBug.Id)
             <div class="bugModule">
