@@ -4,139 +4,160 @@
     ViewBag.Title = "Index";
 }
 
-@Html.ActionLink("Back to Bug List", "Index", "BugList")
-<hr />
 @using (Html.BeginForm("Create", "BugDetails", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-group">
         <div>
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.CompBug.Name)
-                </dt>
 
-                <dd>
-                    @Html.EditorFor(model => model.CompBug.Name, new { htmlAttributes = new { @class = "form-control" } })
-                </dd>
-
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Categories
-                    </div>
-                    <div class="panel-body">
-                        <dt>
-                            @Html.DisplayNameFor(model => model.CompBug.ProdVerId)
-                        </dt>
-
-                        <dd>
-                            @Html.DropDownListFor(model => model.CompBug.ProdVerId, Model.CompBugOptions.ProductVersionSelectList)
-                        </dd>
-
-                        <dt>
-                            @Html.DisplayNameFor(model => model.CompBug.BugPriorityId)
-                        </dt>
-
-                        <dd>
-                            @Html.DropDownListFor(model => model.CompBug.BugPriorityId, Model.CompBugOptions.BugPrioritySelectList)
-                        </dd>
-
-                        <dt>
-                            @Html.DisplayNameFor(model => model.CompBug.BugSeverityId)
-                        </dt>
-
-                        <dd>
-                            @Html.DropDownListFor(model => model.CompBug.BugSeverityId, Model.CompBugOptions.BugSeveritySelectList)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.CompBug.TypeName)
-                        </dt>
-
-                        <dd>
-                            @Html.DropDownListFor(model => model.CompBug.TypeId, Model.CompBugOptions.BugTypeSelectList)
-                        </dd>
-
-                        <dt>
-                            @Html.DisplayNameFor(model => model.CompBug.ProductName)
-                        </dt>
-
-                        <dd>
-                            @Html.DropDownListFor(model => model.CompBug.ProductId, Model.CompBugOptions.ProductSelectList)
-                        </dd>
-
-                        <dt>
-                            @Html.DisplayNameFor(model => model.CompBug.CompName)
-                        </dt>
-
-                        <dd>
-                            @Html.DropDownListFor(model => model.CompBug.CompId, Model.CompBugOptions.ComponentSelectList)
-                        </dd>
-
-                        <dt>
-                            @Html.DisplayNameFor(model => model.CompBug.ProductHwId)
-                        </dt>
-
-                        <dd>
-                            @Html.DropDownListFor(model => model.CompBug.ProductHwId, Model.CompBugOptions.ProductHwSelectList)
-                        </dd>
-
-                        <dt>
-                            @Html.DisplayNameFor(model => model.CompBug.ProductOSId)
-                        </dt>
-
-                        <dd>
-                            @Html.DropDownListFor(model => model.CompBug.ProductOSId, Model.CompBugOptions.ProductOSSelectList)
-                        </dd>
+            <section class="bugModule" style="margin-top:8px">
+                <div class="bugModule-content" id="bugModule-comp-content">
+                    <div class="bugFields-lhs">
+                        <div class="bugField" id="bugFiled-comp">
+                            <div class="bugName" style="vertical-align:middle">
+                                @Html.DisplayNameFor(model => model.CompBug.Name):
+                            </div>
+                            <div class="bugValue">
+                                @Html.EditorFor(model => model.CompBug.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <!--
-    <dt>
-        @Html.DisplayNameFor(model => model.CompBug.AssigneeName)
-    </dt>
+            </section>
 
-    <dd>
-        @Html.DisplayFor(model => model.CompBug.AssigneeName)
-    </dd>
-     -->
-
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Categories
+            <section class="bugModule" id="bugModule-cat">
+                <header class="bugModule-header" id="bugModule-cat-header">
+                    <h2 class="bugModule-title" id=bugModule-cat-title>Categories</h2>
+                </header>
+                <div class="bugModule-content" id="bugModule-prod-content">
+                    <div class="bugFields-lhs">
+                        <div class="bugField" id="bugFiled-prod">
+                            <div class="bugName">
+                                @Html.DisplayNameFor(model => model.CompBug.ProductId):
+                            </div>
+                            <div class="bugValue">
+                                @Html.DropDownListFor(model => model.CompBug.ProductId, Model.CompBugOptions.ProductSelectList)
+                            </div>
+                        </div>
+                        <div class="bugField" id="bugFiled-comp">
+                            <div class="bugName">
+                                @Html.DisplayNameFor(model => model.CompBug.CompId):
+                            </div>
+                            <div class="bugValue">
+                                @Html.DropDownListFor(model => model.CompBug.CompId, Model.CompBugOptions.ComponentSelectList)
+                            </div>
+                        </div>
+                        <div class="bugField" id="bugFiled-type">
+                            <div class="bugName">
+                                @Html.DisplayNameFor(model => model.CompBug.TypeId):
+                            </div>
+                            <div class="bugValue">
+                                @Html.DropDownListFor(model => model.CompBug.TypeId, Model.CompBugOptions.BugTypeSelectList)
+                            </div>
+                        </div>
+                        <div class="bugField" id="bugFiled-priority">
+                            <div class="bugName">
+                                @Html.DisplayNameFor(model => model.CompBug.BugPriorityId):
+                            </div>
+                            <div class="bugValue">
+                                @Html.DropDownListFor(model => model.CompBug.BugPriorityId, Model.CompBugOptions.BugPrioritySelectList)
+                            </div>
+                        </div>
+                        <div class="bugField" id="bugFiled-severity">
+                            <div class="bugName">
+                                @Html.DisplayNameFor(model => model.CompBug.BugSeverityId):
+                            </div>
+                            <div class="bugValue">
+                                @Html.DropDownListFor(model => model.CompBug.BugSeverityId, Model.CompBugOptions.BugSeveritySelectList)
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.CompBug.StatusName)
-                    </dt>
+            </section>
 
-                    <dd>
-                        @Html.DropDownListFor(model => model.CompBug.StatusId, Model.CompBugOptions.BugStatusSelectList)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.CompBug.SubStateName)
-
-                    </dt>
-
-                    <dd>
-                        @Html.DropDownListFor(model => model.CompBug.SubStateId, Model.CompBugOptions.BugStatusSubStateSelectList)
-                    </dd>
+            <section class="bugModule" id="bugModule-track">
+                <header id="bugModule-track-header" class="bugModule-header">
+                    <h2 class="bugModule-title" id=bugModule-track-title>Tracking</h2>
+                </header>
+                <div class="bugModule-content" id="bugModule-track-content">
+                    <div class="bugFields-lhs">
+                        <div class="bugField" id="bugFiled-stat">
+                            <div class="bugName">
+                                @Html.DisplayNameFor(model => model.CompBug.StatusId):
+                            </div>
+                            <div class="bugValue">
+                                @Html.DropDownListFor(model => model.CompBug.StatusId, Model.CompBugOptions.BugStatusSelectList)
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-</dl>
+            <section class="bugModule" id="bugModule-ppl">
+                <header id="bugModule-ppl-header" class="bugModule-header">
+                    <h2 class="bugModule-title" id=bugModule-ppl-title>People</h2>
+                </header>
+                <div class="bugModule-content" id="bugModule-ppl-content">
+                    <div class="bugFields-lhs">
+                        <div class="bugField" id="bugFiled-assignee">
+                            <div class="bugName">
+                                @Html.DisplayNameFor(model => model.CompBug.AssigneeName):
+                            </div>
+                            <div class="bugValue">
+                                @Html.DisplayFor(model => model.CompBug.AssigneeName)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
+            <section class="bugModule" id="bugModule-dtl">
+                <header id="bugModule-dtl-header" class="bugModule-header">
+                    <h2 class="bugModule-title" id=bugModule-dtl-title>Details</h2>
+                </header>
+                <div class="bugModule-content" id="bugModule-dtl-content">
+                    <div class="bugFields-lhs">
+                        <div class="bugField" id="bugFiled-prodver">
+                            <div class="bugName">
+                                @Html.DisplayNameFor(model => model.CompBug.ProdVerId):
+                            </div>
+                            <div class="bugValue">
+                                @Html.DropDownListFor(model => model.CompBug.ProdVerId, Model.CompBugOptions.ProductVersionSelectList)
+                            </div>
+                        </div>
+                        <div class="bugField" id="bugFiled-prodhw">
+                            <div class="bugName">
+                                @Html.DisplayNameFor(model => model.CompBug.ProductHwId):
+                            </div>
+                            <div class="bugValue">
+                                @Html.DropDownListFor(model => model.CompBug.ProductHwId, Model.CompBugOptions.ProductHwSelectList)
+                            </div>
+                        </div>
+                        <div class="bugField" id="bugFiled-prodos">
+                            <div class="bugName">
+                                @Html.DisplayNameFor(model => model.CompBug.ProductOSId):
+                            </div>
+                            <div class="bugValue">
+                                @Html.DropDownListFor(model => model.CompBug.ProductOSId, Model.CompBugOptions.ProductOSSelectList)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            @Html.HiddenFor(model => model.CompBug.SubStateId)
             @Html.HiddenFor(model => model.CompBug.Id)
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.CompBug.ClientNewComment, new { @class = "form-control z-depth-1", @cols = 100, @rows = 10, @placeholder = "Write new comment here..." })
+            <div class="bugModule">
+                @Html.TextAreaFor(model => model.CompBug.ClientNewComment, new { @class = "form-control z-depth-1 bugTextarea", @cols = 100, @rows = 10, @placeholder = "Write description here..." })
                 @Html.ValidationMessageFor(model => model.CompBug.ClientNewComment, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" style="margin-top:4px;text-align:right;">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save Changes" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-success" />
             </div>
         </div>
+        <!--
         <div class="panel-group">
             @foreach (var item in Model.CompBug.BugComments)
             {
@@ -152,6 +173,7 @@
                 </div>
             }
         </div>
+        -->
     </div>
 }
 
