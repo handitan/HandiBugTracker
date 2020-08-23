@@ -13,10 +13,16 @@ namespace HandiBugTrackerWebClient.Library.Models
 
         [Display(Name = "Summary")]
         public string Name { get; set; }
+
+        [Display(Name = "Type")]
         public int TypeId { get; set; }
         public string TypeName { get; set; }
+
+        [Display(Name = "Product")]
         public int ProductId { get; set; }
         public string ProductName { get; set; }
+
+        [Display(Name = "Component")]
         public int CompId { get; set; }
         public string CompName { get; set; }
 
@@ -38,8 +44,11 @@ namespace HandiBugTrackerWebClient.Library.Models
         [Display(Name = "OS")]
         public int ProductOSId { get; set; }
 
+        [Display(Name = "Status")]
         public int StatusId { get; set; }
         public string StatusName { get; set; }
+
+        [Display(Name = "Resolution")]
         public int SubStateId { get; set; }
         public string SubStateName { get; set; }
         public DateTime LastModifiedDate { get; set; }
