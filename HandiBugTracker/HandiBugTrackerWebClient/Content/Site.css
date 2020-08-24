@@ -127,3 +127,12 @@ textarea {
 .bugList-tbl tbody th.first-child, td.first-child, a.bz_secure {
     padding-left: 20px !important;
 }
+
+.auth-form {
+    width: 340px;
+    padding: 20px;
+    font-size: 14px;
+    background-color: #fff;
+    border: 1px solid #d8dee2;
+    border-radius: 5px;
+}

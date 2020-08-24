@@ -57,7 +57,16 @@ namespace HandiBugTrackerWebClient.Controllers
                     return RedirectToRoute("Main");
                 }
             }
-            return RedirectToAction("Index");
+
+            return View("Index");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Logout()
+        {
+            await _apiHelper.Logout();
+            return RedirectToAction("Index", "Account");
         }
     }
 }
