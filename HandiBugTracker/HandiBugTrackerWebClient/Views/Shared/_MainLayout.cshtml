@@ -10,14 +10,18 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
+            <div class="navbar-header" style="display:flex">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Handi BugTracker", "Index", "BugList", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
+                @using (Html.BeginForm("Edit", "BugDetails", new {}, FormMethod.Get, new { @class = "form-horizontal", role = "form", style="margin-top:auto;margin-bottom:auto;" }))
+                {
+                    <input name="id" placeholder="Search Bug" title="Enter a bug number" type="text"/>
+                }
+                </div>
         </div>
     </div>
     <div class="container body-content">

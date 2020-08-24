@@ -87,7 +87,7 @@ namespace HandiBugTrackerWebClient.Controllers
             }
             else
             {
-                return View("Error");
+                return View("MissingBug");
             }
         }
 

@@ -204,6 +204,7 @@
     <Content Include="Views\BugDetails\Edit.cshtml" />
     <Content Include="Views\SaveBug\Index.cshtml" />
     <Content Include="Views\BugDetails\Create.cshtml" />
+    <Content Include="Views\BugDetails\MissingBug.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
