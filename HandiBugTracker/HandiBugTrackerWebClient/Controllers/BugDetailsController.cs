@@ -44,6 +44,7 @@ namespace HandiBugTrackerWebClient.Controllers
             TempData["ReporterId"] = _peopleViewModel.LoggedInUserId;
             TempData["AssigneeId"] = _peopleViewModel.LoggedInUserId;
             TempData["QAId"] = _peopleViewModel.LoggedInUserId;
+            TempData["CompBugOptions"] = bugOptions;
 
             return View(bugAllDetails);
         }
@@ -54,12 +55,20 @@ namespace HandiBugTrackerWebClient.Controllers
         {
             try
             {
-                pBugAllDetailsViewModel.CompBug.ReporterId = TempData["ReporterId"].ToString();
-                pBugAllDetailsViewModel.CompBug.AssigneeId = TempData["AssigneeId"].ToString();
-                pBugAllDetailsViewModel.CompBug.QAId = TempData["QAId"].ToString();
+                if (ModelState.IsValid)
+                {
+                    pBugAllDetailsViewModel.CompBug.ReporterId = TempData["ReporterId"].ToString();
+                    pBugAllDetailsViewModel.CompBug.AssigneeId = TempData["AssigneeId"].ToString();
+                    pBugAllDetailsViewModel.CompBug.QAId = TempData["QAId"].ToString();
 
-                await _bugDetailsEndPoint.Create(pBugAllDetailsViewModel.CompBug);
-                return RedirectToAction("Index", "SaveBug");
+                    await _bugDetailsEndPoint.Create(pBugAllDetailsViewModel.CompBug);
+                    return RedirectToAction("Index", "SaveBug");
+                }
+                else
+                {
+                    pBugAllDetailsViewModel.CompBugOptions = TempData["CompBugOptions"] as CompBugOptionsViewModel;
+                    return View(pBugAllDetailsViewModel);
+                }
             }
             catch
             {
@@ -97,12 +106,19 @@ namespace HandiBugTrackerWebClient.Controllers
         {
             try
             {
-                pBugAllDetailsViewModel.CompBug.ReporterId = TempData["ReporterId"].ToString();
-                pBugAllDetailsViewModel.CompBug.AssigneeId = TempData["AssigneeId"].ToString();
-                pBugAllDetailsViewModel.CompBug.QAId = TempData["QAId"].ToString();
+                if (ModelState.IsValid)
+                {
+                    pBugAllDetailsViewModel.CompBug.ReporterId = TempData["ReporterId"].ToString();
+                    pBugAllDetailsViewModel.CompBug.AssigneeId = TempData["AssigneeId"].ToString();
+                    pBugAllDetailsViewModel.CompBug.QAId = TempData["QAId"].ToString();
 
-                await _bugDetailsEndPoint.Edit(pBugAllDetailsViewModel.CompBug);
-                return RedirectToAction("Index", "SaveBug");
+                    await _bugDetailsEndPoint.Edit(pBugAllDetailsViewModel.CompBug);
+                    return RedirectToAction("Index", "SaveBug");
+                }
+                else
+                {
+                    return View(pBugAllDetailsViewModel);
+                }
             }
             catch
             {

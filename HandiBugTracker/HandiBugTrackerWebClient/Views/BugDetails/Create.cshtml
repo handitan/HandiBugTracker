@@ -19,6 +19,7 @@
                             </div>
                             <div class="bugValue">
                                 @Html.EditorFor(model => model.CompBug.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(m => m.CompBug.Name, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>

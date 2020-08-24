@@ -52,6 +52,7 @@
                             </div>
                             <div class="bugValue">
                                 @Html.EditorFor(model => model.CompBug.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(m => m.CompBug.Name, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
@@ -185,17 +186,6 @@
                     </div>
                 </div>
             </section>
-            <!--
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.CompBug.LastModifiedDate)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.CompBug.LastModifiedDate)
-                </dd>
-            </dl>
-            -->
 
             @Html.HiddenFor(model => model.CompBug.Id)
             <div class="bugModule">

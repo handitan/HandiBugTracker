@@ -11,6 +11,7 @@ namespace HandiBugTrackerWebClient.Library.Models
     {
         public int Id { get; set; }
 
+        [Required]
         [Display(Name = "Summary")]
         public string Name { get; set; }
 
