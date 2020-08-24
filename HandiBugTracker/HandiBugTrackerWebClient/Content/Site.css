@@ -86,3 +86,44 @@ textarea {
 .bugTextarea {
     max-width: none;
 }
+
+.user-role {
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 1px 4px;
+    color: rgb(40, 120, 40);
+    font-size: 11px;
+}
+
+.bugList-tbl {
+    border-top: 1px solid rgb(200,201,202);
+    box-shadow: 0 1px 4px rgba(40,41,42,.2);
+}
+
+.bugList-tbl thead{
+    background: rgb(230,231,232);
+}
+
+.bugList-tbl tr {
+    border-bottom: 1px solid rgb(200,201,202);
+}
+
+.bugList-tbl thead th {
+    padding: 4px 8px;
+}
+
+.bugList-tbl thead th:not(:last-of-type) {
+    border-right: 1px solid rgb(200,201,202);
+}
+
+.bugList-tbl tbody {
+    background-color: rgb(252,252,252)
+}
+
+.bugList-tbl tbody td {
+    padding: 8px;
+}
+
+.bugList-tbl tbody th.first-child, td.first-child, a.bz_secure {
+    padding-left: 20px !important;
+}

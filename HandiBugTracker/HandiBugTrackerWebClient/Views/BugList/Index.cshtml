@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "Index";
 }
-<h3>Bug List</h3>
-@Html.ActionLink("Create New Bug", "Create", "BugDetails")
+
+<a class="btn btn-primary" style="margin-top:8px;margin-bottom:8px" href="/BugDetails/Create">Create Bug</a>
 @Html.Partial("_BugTableView", Model)
+
 

@@ -2,62 +2,65 @@
 @using X.PagedList.Mvc;
 @using X.PagedList
 
-<table class="table">
-    <tr>
-        <th>
-            ID
-        </th>
-        <th>
-            Type
-        </th>
-        <th>
-            Summary
-        </th>
-        <th>
-            Product
-        </th>
-        <th>
-            Assignee
-        </th>
-        <th>
-            Status
-        </th>
-        <th>
-            Resolution
-        </th>
-        <th>
-            Updated
-        </th>
-    </tr>
+<table class="bugList-tbl">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Summary
+            </th>
+            <th>
+                Product
+            </th>
+            <th>
+                Assignee
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Resolution
+            </th>
+            <th>
+                Updated
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bugItem in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(bugItem.Id.ToString(), "Edit", "BugDetails", new { id = bugItem.Id }, null)
 
-    @foreach (var bugItem in Model)
-    {
-<tr>
-    <td>
-        @Html.ActionLink(bugItem.Id.ToString(),"Edit","BugDetails",new { id = bugItem.Id}, null)
-
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => bugItem.TypeName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => bugItem.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => bugItem.ProductName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => bugItem.AssigneeName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => bugItem.StatusName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => bugItem.SubStateName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => bugItem.LastModifiedDate)
-    </td>
-</tr>
-    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => bugItem.TypeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => bugItem.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => bugItem.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => bugItem.AssigneeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => bugItem.StatusName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => bugItem.SubStateName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => bugItem.LastModifiedDate)
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
