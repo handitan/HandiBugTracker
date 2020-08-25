@@ -4,7 +4,9 @@ Bug tracking system
 - Web REST APIs built using ASP .NET MVC with Web API template
 
 8/24/20
+
 This early build supports only one user role.
+
 Supported features:
 1. CRUD operations for bugs.
 2. Add new comments operations in existing bugs.
@@ -15,4 +17,5 @@ Supported features:
 Demo of this build is hosted in Azure.
 
 Potential employer:
+
 Please contact me if you would like to access the demo app.
