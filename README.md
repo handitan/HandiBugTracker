@@ -2,6 +2,7 @@
 Bug tracking system 
 - Client app built using ASP.NET MVC 5
 - Server app built using ASP .NET MVC with Web API template and SQL Server
+
 Server app serves REST APIs
 
 8/24/20
